@@ -1,7 +1,5 @@
 # notepad
-Python ile basit bir not defteri program覺
+Python ile basit bir not defteri program覺 yap覺m覺
 
-# k羹瀟羹neler
-PyQt5, sys, os
-
-
+# k羹t羹phaneler:
+Pyqt5, os, sys
