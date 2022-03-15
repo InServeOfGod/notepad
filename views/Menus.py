@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QMenu, QMenuBar
+from PyQt5.QtWidgets import QMenu
+
 from views.Actions import Actions
 
 
@@ -15,7 +16,9 @@ class Menus(Actions):
         self.settings = QMenu("&Ayarlar")
         self.help = QMenu("&Yardım")
 
-    def add_actions(self):
+        self._actions()
+
+    def _actions(self):
         self.file.addAction(self.file_new)
         self.file.addAction(self.file_new_window)
         self.file.addAction(self.file_open)
@@ -36,7 +39,7 @@ class Menus(Actions):
 
         self.view.addAction(self.view_full)
         self.view.addAction(self.view_toggle_menu)
-        self.view.addAction(self.view_toggle_toolbar)
+        # self.view.addAction(self.view_toggle_toolbar)
 
         self.settings.addAction(self.settings_fg)
         self.settings.addAction(self.settings_bg)
@@ -45,7 +48,7 @@ class Menus(Actions):
         self.help.addAction(self.help_help)
         self.help.addAction(self.help_about)
 
-    def add_menus(self):
+    def main(self):
         menubar = self.win.menuBar()
         menubar.addMenu(self.file)
         menubar.addMenu(self.edit)

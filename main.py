@@ -7,8 +7,8 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     mainController = MainController()
-    mainController.main()
     mainController.menu()
     mainController.text_area()
+    mainController.main()
 
     app.exec()

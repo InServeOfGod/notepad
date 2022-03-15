@@ -1,39 +1,40 @@
-from PyQt5.QtGui import QKeySequence, QIcon
+from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QAction
 
 
 class Actions:
     def __init__(self, controller):
         self.controller = controller
+        self.model = self.controller.model
 
-        self.file_new = QAction(QIcon("./assets/img/document--plus.png"), "Yeni")
-        self.file_new_window = QAction(QIcon("./assets/img/newspapers.png"), "Yeni Pencere")
-        self.file_open = QAction(QIcon("./assets/img/document-import.png"), "Aç")
-        self.file_save = QAction(QIcon("./assets/img/disk-return.png"), "Kaydet")
-        self.file_save_as = QAction(QIcon("./assets/img/disks.png"), "Farklı Kaydet")
-        self.file_print = QAction(QIcon("./assets/img/printer.png"), "Yazdır")
-        self.file_exit = QAction(QIcon("./assets/img/door-open-in.png"), "Çık")
+        self.file_new = QAction(self.model.new_icon, "Yeni")
+        self.file_new_window = QAction(self.model.new_window_icon, "Yeni Pencere")
+        self.file_open = QAction(self.model.open_icon, "Aç")
+        self.file_save = QAction(self.model.save_icon, "Kaydet")
+        self.file_save_as = QAction(self.model.save_as_icon, "Farklı Kaydet")
+        self.file_print = QAction(self.model.print_icon, "Yazdır")
+        self.file_exit = QAction(self.model.exit_icon, "Çık")
 
-        self.edit_select_all = QAction(QIcon("./assets/img/selection-select.png"), "Hepsini Seç")
-        self.edit_undo = QAction(QIcon("./assets/img/arrow-turn-180-left.png"), "Geri al")
-        self.edit_redo = QAction(QIcon("./assets/img/arrow-turn.png"), "İleri al")
-        self.edit_cut = QAction(QIcon("./assets/img/scissors.png"), "Kes")
-        self.edit_copy = QAction(QIcon("./assets/img/document-copy.png"), "Kopyala")
-        self.edit_paste = QAction(QIcon("./assets/img/clipboard-paste.png"), "Yapıştır")
-        self.edit_find = QAction(QIcon("./assets/img/magnifier.png"), "Bul")
-        self.edit_replace = QAction(QIcon("./assets/img/magnifier--pencil.png"), "Değiştir")
-        self.edit_datetime = QAction(QIcon("./assets/img/sort-date.png"), "Tarih & Saat")
+        self.edit_select_all = QAction(self.model.select_all_icon, "Hepsini Seç")
+        self.edit_undo = QAction(self.model.undo_icon, "Geri al")
+        self.edit_redo = QAction(self.model.redo_icon, "İleri al")
+        self.edit_cut = QAction(self.model.cut_icon, "Kes")
+        self.edit_copy = QAction(self.model.copy_icon, "Kopyala")
+        self.edit_paste = QAction(self.model.paste_icon, "Yapıştır")
+        self.edit_find = QAction(self.model.find_icon, "Bul")
+        self.edit_replace = QAction(self.model.replace_icon, "Değiştir")
+        self.edit_datetime = QAction(self.model.clock_icon, "Tarih & Saat")
 
-        self.view_full = QAction(QIcon("./assets/img/application-resize-full.png"), "Tam Ekran")
-        self.view_toggle_menu = QAction(QIcon("./assets/img/ui-menu.png"), "Menü Göster/Gizle")
-        self.view_toggle_toolbar = QAction(QIcon("./assets/img/ui-toolbar.png"), "Araç Çubuğu Göster/Gizle")
+        self.view_full = QAction(self.model.full_icon, "Tam Ekran")
+        self.view_toggle_menu = QAction(self.model.menu_icon, "Menü Göster/Gizle")
+        self.view_toggle_toolbar = QAction(self.model.toolbar_icon, "Araç Çubuğu Göster/Gizle")
 
-        self.settings_fg = QAction(QIcon("./assets/img/highlighter-color.png"), "Yazı Rengi")
-        self.settings_bg = QAction(QIcon("./assets/img/paint-can-color.png"), "Arkaplan Rengi")
-        self.settings_font = QAction(QIcon("./assets/img/layer-shape-text.png"), "Font Ayarları")
+        self.settings_fg = QAction(self.model.fg_icon, "Yazı Rengi")
+        self.settings_bg = QAction(self.model.bg_icon, "Arkaplan Rengi")
+        self.settings_font = QAction(self.model.font_icon, "Font Ayarları")
 
-        self.help_help = QAction(QIcon("./assets/img/question.png"), "Yardım")
-        self.help_about = QAction(QIcon("./assets/img/information.png"), "Hakkında")
+        self.help_help = QAction(self.model.help_icon, "Yardım")
+        self.help_about = QAction(self.model.about_icon, "Hakkında")
 
     def shortcuts(self):
         self.file_new.setShortcut(QKeySequence("Ctrl+N"))
@@ -77,7 +78,7 @@ class Actions:
 
     def triggers(self):
         self.file_new.triggered.connect(self.controller.action_file_new)
-        self.file_new_window.triggered.connect(self.controller.action_file_new)
+        self.file_new_window.triggered.connect(self.controller.action_file_new_window)
         self.file_open.triggered.connect(self.controller.action_file_open)
         self.file_save.triggered.connect(self.controller.action_file_save)
         self.file_save_as.triggered.connect(self.controller.action_file_save_as)
